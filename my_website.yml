@@ -1,0 +1,22 @@
+---
+ - name : website
+   hosts : Server
+   become : yes
+   tasks :
+   - name : install ubuntu OS updates
+      apt :
+      - update_cache : yes
+      - register : update result
+   - name : install python
+      apt : 
+      - name : python3
+        state : present
+   - name : ensure docker is installed
+      apt : 
+      - name : docker
+        state : started
+        enabled : yes
+   - name : build docker
+      command : docker build -t
+   - name : run docker
+      command : docker run -t -d-p 8080:8080
